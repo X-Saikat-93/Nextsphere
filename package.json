@@ -2,6 +2,11 @@
   "name": "nextsphere",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Saikat Das",
+    "email": "ibx.saikat37@gmail.com",
+    "url": "http://github.com/X-Saikat-93"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
