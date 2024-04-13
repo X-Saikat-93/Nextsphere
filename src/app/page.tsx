@@ -1,10 +1,21 @@
-import Image from "next/image";
-
-export default function Home() {
+import {
+  currentUser,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
+import HeroSection from "@/components/HeroSection/mainHeroSection";
+import Navbar from "@/components/Header/navBar";
+import Footer from "@/components/Footer/footer";
+export default async function Page() {
+  const user = await currentUser();
   return (
-    <main className=" m-auto w-auto">
-      <Image src="/next.svg" alt="Next.js Logo" width={180} height={37} />
-     <h1> This is going to be a Massive project with full Authentication & End to End TypeSafe. </h1>
-    </main>
+    <>
+      <Navbar />
+      <HeroSection user={user} />
+      
+      <Footer />
+    </>
   );
 }
