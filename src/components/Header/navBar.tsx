@@ -20,10 +20,10 @@ export default async function Navbar() {
   return (
     <header className=' border-b-2 top-0 z-50 sticky px-4 w-full border-black dark:border-slate-200  shadow-lg lg:shadow-xl shadow-slate-700/5 lg:backdrop-blur-sm backdrop-blur-lg lg:after:hidden rounded-xl dark:bg-inherit'>
       <div className='wrapper flex items-center justify-between py-4 mx-4 lg:mx-8  md:mx-4 '>
-        <Link href='/' className='w-36 mr-4 flex  pl-4 items-center gap-x-3'>
+        <Link href='/' className='w-36 mr-4 flex  pl-4 items-center gap-x-3 flex-col lg:flex-row'>
           <Image src='/mascot.svg' height={40} width={40} alt='Mascot' />
-          <h1 className='text-2xl font-extrabold text-primary tracking-wide'>
-            LangSnap
+          <h1 className=' text-lg font-extrabold text-primary tracking-wide lg:text-2xl'>
+          WordFlow
           </h1>
         </Link>
         <div className='flex w-32 justify-end gap-3  '>
@@ -53,7 +53,7 @@ export default async function Navbar() {
                 mode='modal'
                 afterSignInUrl='/learn'
                 afterSignUpUrl='/learn'>
-                <Button size='lg' variant='gooeyfyRight'>
+                <Button  variant='gooeyfyRight'>
                   {!user ? (
                     <UserPlus className='mr-2 h-4 w-4' />
                   ) : (
