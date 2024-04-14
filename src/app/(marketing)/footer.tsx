@@ -67,10 +67,12 @@ export const Footer = () => {
       </div>
       <div className='w-full py-6 mt-16'>
         <div className='container flex flex-col items-center justify-center gap-4 px-4 text-center md:flex-row md:items-start md:justify-between md:gap-8 md:px-6 lg:gap-10'>
-          <h1 className='lg:text-3xl md:text-2xl font-bold text-xl'>
-            <span className='text-[#14213d] dark:text-white'>Word</span>
-            <span className='text-[#fca311] dark:text-[#e63946]'>Flow</span>
-          </h1>
+          <Link href='/'>
+            <h1 className='lg:text-3xl md:text-2xl font-bold text-xl'>
+              <span className='text-[#14213d] dark:text-white'>Word</span>
+              <span className='text-[#fca311] dark:text-[#e63946]'>Flow</span>
+            </h1>
+          </Link>
           <div className='flex items-center justify-center gap-4 md:gap-8 lg:gap-4'>
             <Link
               className='rounded-full border border-gray-200 w-8 h-8 flex items-center justify-center overflow-hidden shadow-sm hover:bg-green-500 hover:text-gray-900 dark:border-gray-800 dark:hover:bg-green-600 dark:hover:text-gray-50 transition duration-500 ease-linear'

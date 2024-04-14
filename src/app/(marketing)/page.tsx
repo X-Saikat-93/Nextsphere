@@ -11,7 +11,6 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import HeroAccordion from "./heroAccordion";
-import { Sidebar } from "@/components/sidebar";
 
 export default function Home() {
   return (
@@ -22,7 +21,7 @@ export default function Home() {
         </div>
         <div className='flex flex-col items-center gap-y-8'>
           <h1 className='text-xl  lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center bg-gradient-to-r from-accent-foreground to-neutral-700 text-transparent bg-clip-text'>
-            Learn, practice, and master new languages with Fluence.
+            Learn, practice, and master new languages with WordFlow.
           </h1>
           <div className='flex flex-col items-center gap-y-3 max-w-[330px] w-full'>
             <ClerkLoading>
@@ -61,9 +60,9 @@ export default function Home() {
         </div>
       </div>
       {/* Features */}
-      <div className="flex mt-12 w-full mb-8">
+      <div className="flex mt-12 w-full mb-8 ">
         <HeroAccordion />
-  
+
       </div>
     </>
   );
