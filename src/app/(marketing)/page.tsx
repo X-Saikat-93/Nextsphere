@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import HeroAccordion from "./heroAccordion";
+import { Sidebar } from "@/components/sidebar";
 
 export default function Home() {
   return (
@@ -62,6 +63,7 @@ export default function Home() {
       {/* Features */}
       <div className="flex mt-12 w-full mb-8">
         <HeroAccordion />
+  
       </div>
     </>
   );

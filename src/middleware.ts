@@ -6,7 +6,7 @@ export default authMiddleware({
   // Allow signed out users to access the specified routes:
   // publicRoutes: ['/anyone-can-visit-this-route'],
   publicRoutes: ["/"],
-  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+.[w]+$)", "/buttons"],
+  ignoredRoutes: ["/((?!api|trpc))(_next.*|.+.[w]+$)", "/not-found", "/404"],
 });
 
 export const config = {
