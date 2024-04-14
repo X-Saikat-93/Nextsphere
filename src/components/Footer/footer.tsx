@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {
-    Facebook,
+  Facebook,
   LinkedinIcon,
   Github,
   InstagramIcon,
