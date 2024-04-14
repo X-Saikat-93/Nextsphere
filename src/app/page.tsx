@@ -13,9 +13,9 @@ export default async function Page() {
   return (
     <>
       <Navbar />
-      <HeroSection user={user} />
+
+      {/* <HeroSection user={user} /> */}
       
-      <Footer />
     </>
   );
 }
