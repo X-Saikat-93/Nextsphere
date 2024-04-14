@@ -15,6 +15,7 @@ const ButtonsPage = () => {
       <Button variant='ghost'>Ghost</Button>
       <Button variant='sidebar'>Sidebar</Button>
       <Button variant='sidebarOutline'>Sidebar Outline</Button>
+      <Button variant='gooeyLeft'>Link</Button>
     </div>
   );
 };

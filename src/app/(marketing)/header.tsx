@@ -9,10 +9,11 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/modeToggle";
 
 export const Header = () => {
   return (
-    <header className='h-20 w-full border-b-2 border-slate-200 px-4'>
+    <header className='h-20 w-full px-4 border-b-2 top-0 z-50 sticky  border-black dark:border-slate-200  shadow-lg lg:shadow-xl shadow-slate-700/5 lg:backdrop-blur-sm backdrop-blur-lg lg:after:hidden rounded-xl dark:bg-inherit'>
       <div className='lg:max-w-screen-lg mx-auto flex items-center justify-between h-full'>
         <div className='pt-8 pl-4 pb-7 flex items-center gap-x-3'>
           <Image src='/mascot.svg' height={40} width={40} alt='Mascot' />
