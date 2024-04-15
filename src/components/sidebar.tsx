@@ -4,7 +4,7 @@ import Image from "next/image";
 import { SidebarItem } from "./sidebar-item";
 import { ClerkLoading, ClerkLoaded, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
-
+import { ModeToggle } from "./modeToggle";
 type Props = {
   className?: string;
 };
@@ -34,6 +34,9 @@ export const Sidebar = ({ className }: Props) => {
         />
         <SidebarItem label='quests' href='/quests' iconSrc='/quests.svg' />
         <SidebarItem label='shop' href='/shop' iconSrc='/shop.svg' />
+      </div>
+      <div className=" hidden lg:block ml-3">
+        <ModeToggle />
       </div>
       <div className='p-4'>
         <ClerkLoading>
