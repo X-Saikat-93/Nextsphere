@@ -14,7 +14,8 @@
     "lint": "next lint",
     "db:studio": "pnpm drizzle-kit studio",
     "db:push": "pnpm drizzle-kit push:pg",
-    "db:generate": "pnpm drizzle-kit generate:pg"
+    "db:generate": "pnpm drizzle-kit generate:pg",
+    "db:seed": "tsx ./scripts/seed.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.10",
@@ -28,6 +29,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.6",
     "lucide-react": "^0.364.0",
     "next": "14.1.4",
