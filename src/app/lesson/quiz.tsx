@@ -26,7 +26,7 @@ const Quiz = ({
   const [percentage, setPercentage] = useState(() => {
     return initialPercentage === 100 ? 0 : initialPercentage;
   });
-  
+
 
   
   return (
@@ -49,7 +49,7 @@ const Quiz = ({
             <h1 className='text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700'>
             Heading
             </h1>
-            <div>
+            {/* <div>
               {challenge.type === "ASSIST" && (
                 <QuestionBubble question={challenge.question} />
               )}
@@ -61,7 +61,7 @@ const Quiz = ({
                 disabled={pending}
                 type={challenge.type}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

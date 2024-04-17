@@ -1,5 +1,6 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
+import { ExitModal } from "@/components/modals/exit-model";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
@@ -26,6 +27,7 @@ export default function RootLayout({
             defaultTheme='system'
             enableSystem
             disableTransitionOnChange>
+            <ExitModal/>
             {children}
             <Toaster/>
           </ThemeProvider>
