@@ -6,6 +6,15 @@ import Confetti from "react-confetti";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challeneg } from "./challenge";
+import { Footer } from "./footer";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { HeartsModal } from "@/components/modals/hearts-model";
+import { useHeartsModal } from "../../../store/use-hearts-model";
+import { upsertChallenegeProgress } from "../../../actions/challenge-progress";
+import { usePracticeModal } from "../../../store/use-practice-modal";
+import { useAudio } from "react-use";
+import { reduceHearts } from "../../../actions/user-progress";
 type Props = {
   initialPercentage: number;
   initialHearts: number;
@@ -24,8 +33,17 @@ const Quiz = ({
   initialLessonChallenges,
   userSubscription,
 }: Props) => {
+  const router = useRouter();
+  const { open: openHeartsModal } = useHeartsModal();
+
+  const { open: openPracticeModal } = usePracticeModal();
+  const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
+  const [incorrectAudio, _i, incorrectControls] = useAudio({
+    src: "/incorrect.wav",
+  });
+  const [finishAudio] = useAudio({ src: "/finish.mp3", autoPlay: true });
   const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
-    const [pending, startTransition] = useTransition();
+  const [pending, startTransition] = useTransition();
   const [hearts, setHearts] = useState(initialHearts);
 
   const [percentage, setPercentage] = useState(() => {
@@ -41,7 +59,7 @@ const Quiz = ({
   });
   const challenge = challenges[activeIndex];
 
-   const [selectedoption, setSelectedOption] = useState<number>();
+  const [selectedoption, setSelectedOption] = useState<number>();
   const options = challenge?.challengeOptions ?? [];
   const title =
     challenge.type === "ASSIST"
@@ -53,7 +71,70 @@ const Quiz = ({
 
     setSelectedOption(id);
   };
+  const onNext = () => {
+    setActiveIndex((correct) => correct + 1);
+  };
+  const onContinue = () => {
+    if (!selectedoption) return;
 
+    if (status === "wrong") {
+      setStatus("none");
+      setSelectedOption(undefined);
+      return;
+    }
+
+    if (status === "correct") {
+      onNext();
+      setStatus("none");
+      setSelectedOption(undefined);
+      return;
+    }
+    const correctOption = options.find((option) => option.correct);
+    if (!correctOption) {
+      return;
+    }
+    if (correctOption && correctOption.id === selectedoption) {
+      startTransition(() => {
+        upsertChallenegeProgress(challenge.id)
+          .then((response) => {
+            if (response?.error === "hearts") {
+              openHeartsModal();
+              return;
+            }
+
+            correctControls.play();
+            setStatus("correct");
+            setPercentage((prev) => prev + 100 / challenges.length);
+
+            //this is practice
+            if (initialPercentage === 100) {
+              setHearts((prev) => Math.min(prev + 1, 5));
+            }
+          })
+          .catch(() =>
+            toast.error("Something went wrong!! please  try again!!")
+          );
+      });
+    } else {
+      startTransition(() => {
+        reduceHearts(challenge.id)
+          .then((response) => {
+            if (response?.error === "hearts") {
+              openHeartsModal();
+              return;
+            }
+            incorrectControls.play();
+
+            setStatus("wrong");
+
+            if (!response?.error) {
+              setHearts((prev) => Math.max(prev - 1, 0));
+            }
+          })
+          .catch(() => toast.error("Something went wrong!! try again!!"));
+      });
+    }
+  };
   return (
     <>
       <Confetti
@@ -90,6 +171,11 @@ const Quiz = ({
           </div>
         </div>
       </div>
+      <Footer
+        lessonId={lessonId}
+        status={status}
+        onCheck={() => router.push("/learn")}
+      />
     </>
   );
 };
