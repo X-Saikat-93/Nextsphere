@@ -1,7 +1,7 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/stickey-wrapper";
 import { UserProgress } from "@/components/user-progress";
-import { getUserProgress,  } from "../../../../db/quaries";
+import { getUserProgress, } from "../../../../db/quaries";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Items } from "./items";
