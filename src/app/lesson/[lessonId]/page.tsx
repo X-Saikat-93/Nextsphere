@@ -34,8 +34,10 @@ const LessonIdPage = async ({ params }: Props) => {
       initialLessonChallenges={lesson.challenges}
       initialHearts={userProgress.hearts}
       initialPercentage={initialPercentage}
-      userSubscription={undefined}
+      
+      
     />
+    // todo add- user subscription
   );
 };
 
