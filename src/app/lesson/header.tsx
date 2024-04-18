@@ -2,7 +2,7 @@ import { InfinityIcon, X } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
 import { useExitModal } from "../../../store/use-exit-model";
-
+import { ModeToggle } from "@/components/modeToggle";
 type Props = {
   hearts: number;
   percentage: number;
@@ -36,6 +36,7 @@ export const Header = ({
           hearts
         )}
       </div>
+      <div> <ModeToggle /> </div>
     </header>
   );
 };
