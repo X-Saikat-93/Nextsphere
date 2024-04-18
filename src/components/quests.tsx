@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { quests } from "@/constants";
+import { quests } from "../../constants";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 

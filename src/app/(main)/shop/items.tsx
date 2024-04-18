@@ -29,15 +29,15 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
   };
 
   const onUpgrade = () => {
-    startTransition(() => {
-      createStripeUrl()
-        .then((response) => {
-          if (response.data) {
-            window.location.href = response.data;
-          }
-        })
-        .catch(() => toast.error("Something went wrong"));
-    });
+    // startTransition(() => {
+    //   createStripeUrl()
+    //     .then((response) => {
+    //       if (response.data) {
+    //         window.location.href = response.data;
+    //       }
+    //     })
+    //     .catch(() => toast.error("Something went wrong"));
+    // });
   };
 
   return (
