@@ -1,6 +1,10 @@
 "use client";
 
-import { challenges, challengeOptions } from "../../../db/schema";
+import {
+  challenges,
+  challengeOptions,
+  userSubscription,
+} from "../../../db/schema";
 import { useState, useTransition } from "react";
 import Confetti from "react-confetti";
 import { Header } from "./header";
@@ -25,19 +29,19 @@ type Props = {
     completed: boolean;
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
   })[];
-  // userSubscription:
-  //   | (typeof userSubscription.$inferSelect & {
-  //       isActive: boolean;
-  //     })
-  //   | null;
+  userSubscription:
+    | (typeof userSubscription.$inferSelect & {
+        isActive: boolean;
+      })
+    | null;
 };
 
- const Quiz = ({
+const Quiz = ({
   initialPercentage,
   initialHearts,
   initialLessonId,
   initialLessonChallenges,
-  
+  userSubscription,
 }: Props) => {
   const { open: openHeartsModal } = useHeartsModal();
 
@@ -211,12 +215,12 @@ type Props = {
       <Header
         hearts={hearts}
         percentage={percentage}
-        hasActiveSubscription={false}
+        hasActiveSubscription={!!userSubscription?.isActive}
       />
       <div className='flex-1'>
         <div className='h-full flex items-center justify-center'>
           <div className='lg:min-h-[350px] lg:w-[600px] w-full px-6 lg:px-0 flex flex-col gap-y-12'>
-            <h1 className='text-lg lg:text-3xl text-center lg:text-start font-bold text-foreground'>
+            <h1 className='text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700'>
               {title}
             </h1>
             <div>
