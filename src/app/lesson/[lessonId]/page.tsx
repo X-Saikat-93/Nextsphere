@@ -4,7 +4,7 @@ import {
   getUserSubscription,
 } from "../../../../db/quaries";
 import { redirect } from "next/navigation";
-import Quiz from "../quiz";
+import {Quiz} from "../quiz";
 
 type Props = {
   params: {

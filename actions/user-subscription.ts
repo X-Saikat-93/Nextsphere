@@ -41,7 +41,9 @@ export const createStripeUrl = async () => {
             name: "WordFlow Pro",
             description: "Unlimited Hearts",
           },
-          unit_amount: 20000,
+          
+
+          unit_amount: 20,
           recurring: {
             interval: "month",
           },
