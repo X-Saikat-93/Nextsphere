@@ -36,7 +36,7 @@ type Props = {
     | null;
 };
 
-const Quiz = ({
+export const Quiz = ({
   initialPercentage,
   initialHearts,
   initialLessonId,
@@ -247,5 +247,3 @@ const Quiz = ({
     </>
   );
 };
-
-export default Quiz;

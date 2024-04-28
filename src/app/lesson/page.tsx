@@ -4,7 +4,7 @@ import {
   getUserProgress,
   getUserSubscription,
 } from "../../../db/quaries";
-import Quiz from "./quiz";
+import {Quiz} from "./quiz";
 const LessonPage = async () => {
   const lessonData = getLesson();
   const userProgressData = getUserProgress();
