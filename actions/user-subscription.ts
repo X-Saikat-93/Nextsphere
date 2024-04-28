@@ -35,7 +35,7 @@ export const createStripeUrl = async () => {
     line_items: [
       {
         quantity: 1,
-        price_data: {
+        price_data: { 
           currency: "USD",
           product_data: {
             name: "WordFlow Pro",
@@ -43,14 +43,14 @@ export const createStripeUrl = async () => {
           },
           
 
-          unit_amount: 20,
+          unit_amount: 15,
           recurring: {
             interval: "month",
           },
         },
       },
       ],
- 
+
     metadata: {
       userId,
     },
