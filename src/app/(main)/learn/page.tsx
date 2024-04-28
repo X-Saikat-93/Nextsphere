@@ -1,6 +1,7 @@
 import { StickyWrapper } from "@/components/stickey-wrapper";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { Header } from "./header";
+import { Quests } from "@/components/quests";
 import { UserProgress } from "@/components/user-progress";
 import {
   getUserProgress,
@@ -11,6 +12,7 @@ import {
 } from "../../../../db/quaries";
 import { redirect } from "next/navigation";
 import { Unit } from "./unit";
+import { Promo } from "@/components/promo";
 const LearnPage = async () => {
   const userProgressData = getUserProgress();
   const lessonPercentageData = getLessonPercentage();
@@ -38,7 +40,10 @@ const LearnPage = async () => {
 
     if (!courseProgress) {
       redirect("/courses");
-    }
+  }
+  
+  
+  const isPro = !!UserSubscription?.isActive;
 
   return (
     <>
@@ -50,6 +55,8 @@ const LearnPage = async () => {
             points={userProgress.points}
             hasActiveSubscription={!!UserSubscription?.isActive}
           />
+          {!isPro && <Promo />}
+          <Quests points={userProgress.points} />
         </StickyWrapper>
         <FeedWrapper>
           <Header title={userProgress.activeCourse.title} />
