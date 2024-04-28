@@ -15,7 +15,7 @@ export const Quests = ({ points }: Props) => {
       <div className='flex items-center justify-between w-full space-y-2'>
         <h3 className='font-bold text-lg'>Quests</h3>
         <Link href='/quests'>
-          <Button size='sm' variant='primaryOutline'>
+          <Button size='sm' variant='gooeyfyRight'>
             View all
           </Button>
         </Link>
