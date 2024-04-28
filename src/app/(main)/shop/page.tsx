@@ -1,7 +1,7 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/stickey-wrapper";
 import { UserProgress } from "@/components/user-progress";
-import { getUserProgress, } from "../../../../db/quaries";
+import { getUserProgress,getUserSubscription } from "../../../../db/quaries";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Items } from "./items";
@@ -10,20 +10,20 @@ import { Quests } from "@/components/quests";
 
 const ShopPage = async () => {
   const userProgressData = getUserProgress();
-//   const userSubscriptionData = getUserSubscription();
+  const userSubscriptionData = getUserSubscription();
 
-  const [userProgress, ] = await Promise.all([
+  const [userProgress, userSubscription] = await Promise.all([
     userProgressData,
-    // userSubscriptionData,
+    userSubscriptionData,
   ]);
 
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }
 
-    //   const isPro = !!userSubscription?.isActive;
-    const isPro = false
+  const isPro = !!userSubscription?.isActive; 
 
+  
   return (
     <div className='flex flex-row-reverse gap-[48px] px-6'>
       <StickyWrapper>
@@ -31,7 +31,7 @@ const ShopPage = async () => {
           activeCourse={userProgress.activeCourse}
           hearts={userProgress.hearts}
           points={userProgress.points}
-          hasActiveSubscription={false}
+          hasActiveSubscription={isPro}
         />
         {!isPro && <Promo />}
         <Quests points={userProgress.points} />

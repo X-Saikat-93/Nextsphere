@@ -4,7 +4,7 @@ import db from "../db/drizzle";
 import {
   getCourseById,
   getUserProgress,
-  
+  getUserSubscription,
 } from "../db/quaries";
 import { challengeProgress, challenges, userProgress } from "../db/schema";
 import { auth, currentUser } from "@clerk/nextjs";
@@ -65,7 +65,7 @@ export const reduceHearts = async (challengeId: number) => {
   }
 
   const currentUserProgress = await getUserProgress();
-  // const UserSubscription = await getUserSubscription();
+  const UserSubscription = await getUserSubscription();
 
   const challenge = await db.query.challenges.findFirst({
     where: eq(challenges.id, challengeId),
@@ -94,9 +94,9 @@ export const reduceHearts = async (challengeId: number) => {
     throw new Error("User progress not found");
   }
 
-  // if (UserSubscription?.isActive) {
-  //   return { error: "subscription" };
-  // }
+  if (UserSubscription?.isActive) {
+    return { error: "subscription" };
+  }
 
   if (currentUserProgress.hearts === 0) {
     return { error: "hearts" };

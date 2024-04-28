@@ -1,15 +1,19 @@
 import { redirect } from "next/navigation";
-import { getLesson, getUserProgress } from "../../../db/quaries";
+import {
+  getLesson,
+  getUserProgress,
+  getUserSubscription,
+} from "../../../db/quaries";
 import Quiz from "./quiz";
 const LessonPage = async () => {
   const lessonData = getLesson();
   const userProgressData = getUserProgress();
-  // const userSubscriptionData = getUserSubscription();
+  const userSubscriptionData = getUserSubscription();
 
-  const [lesson, userProgress] = await Promise.all([
+  const [lesson, userProgress, UserSubscription] = await Promise.all([
     lessonData,
     userProgressData,
-    // userSubscriptionData,
+    userSubscriptionData,
   ]);
 
   if (!lesson || !userProgress) {
@@ -27,7 +31,7 @@ const LessonPage = async () => {
       initialLessonChallenges={lesson.challenges}
       initialHearts={userProgress.hearts}
       initialPercentage={initialPercentage}
-    
+      userSubscription={UserSubscription}
     />
   );
 };
