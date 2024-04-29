@@ -43,7 +43,7 @@ export const createStripeUrl = async () => {
           },
           
 
-          unit_amount: 15,
+          unit_amount: 150,
           recurring: {
             interval: "month",
           },
